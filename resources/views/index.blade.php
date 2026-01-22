@@ -5,63 +5,75 @@
 @section('konten')
 <div class="container-fluid px-4">
     <h1 class="mt-4">Beranda</h1>
-    
-    <div class="row">
+
+    <div class="row ">
         <div class="col-xl-3 col-md-6">
-            <div class="card   mb-4">
-                <div class="card-body ">jumlah layanan</div>
-                <div class="card-body ">5</div>
-                
+            <div class="card bg-primary text-white  mb-4">
+                <h4 class="card-body text-capitalize">jumlah layanan</h4>
+                <h2 class="card-body "><b>5</b></h2>
+
             </div>
         </div>
-        
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <h4 class="card-body text-capitalize">transaksi baru</h4>
+                <h2 class="card-body "><b>3</b></h2>
+
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <h4 class="card-body text-capitalize">sedang diproses</h4>
+                <h2 class="card-body "><b>2</b></h2>
+
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <h4 class="card-body text-capitalize">belum dibayar</h4>
+                <h2 class="card-body "><b>1</b></h2>
+
+            </div>
+        </div>
+
     </div>
 
+
+
+    <h3 class="mt-4">Transaksi Terbaru</h3>
     <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-table me-1"></i>
-            DataTable Example
-        </div>
+        
         <div class="card-body">
-            <table id="datatablesSimple">
+            <table class="table-striped" id="datatablesSimple">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                    <tr class="text-capitalize">
+                        <th>No</th>
+                        <th>Nama pelanggan</th>
+                        <th>layanan</th>
+                        <th>berat</th>
+                        <th>tanggal transaksi</th>
+                        <th>pembayaran</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </tfoot>
+                
                 <tbody>
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td>1</td>
+                        <td>warsini</td>
+                        <td>Cuci Setrika</td>
+                        <td>10 kg</td>
+                        <td>12 Feb 2024</td>
+                        <td>Belum Bayar</td>
                     </tr>
                     <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
+                        <td>2</td>
+                        <td>Warsito</td>
+                        <td>Cuci Saja</td>
+                        <td>5 kg</td>
+                        <td>11 Feb 2024</td>
+                        <td>Lunas</td>
                     </tr>
-                   
+
                 </tbody>
             </table>
         </div>
