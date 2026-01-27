@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class transaksi extends Model
+class Transaksi extends Model
 {
     protected $table = 'transaksis';
     protected $primaryKey = 'id_transaksi';
@@ -13,6 +13,6 @@ class transaksi extends Model
 
     public function layanan()
     {
-        return $this->belongsto(layanan::class, 'id_layanan', 'id_layanan');
+        return $this->belongsto(Layanan::class, 'id_layanan', 'id_layanan');
     }
 }

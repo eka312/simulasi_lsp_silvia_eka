@@ -1,30 +1,27 @@
 <?php
 
-use App\Http\Controllers\ControllerDashboard;
-use App\Http\Controllers\ControllerLayanan;
-use App\Http\Controllers\ControllerTransaksi;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/hal-cetak', function () {
-    return view('hal-cetak');
-});
 
+Route::get('/',[DashboardController::class, 'index'])->name('index');
 
-Route::get('/',[ControllerDashboard::class, 'index'])->name('index');
+// LAYANAN 
 
-// ===== LAYANAN =====
+Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
+Route::post('/tambah_layanan', [LayananController::class, 'store'])->name('tambah_layanan');
+Route::put('/ubah_layanan/{id}', [LayananController::class, 'update'])->name('ubah_layanan');
+Route::delete('/hapus_layanan/{id}', [LayananController::class, 'destroy'])->name('hapus_layanan');
 
-Route::get('/layanan', [ControllerLayanan::class, 'index'])->name('layanan');
-Route::post('/tambah_layanan', [ControllerLayanan::class, 'store'])->name('tambah_layanan');
-Route::put('/ubah_layanan/{id}', [ControllerLayanan::class, 'update'])->name('ubah_layanan');
-Route::delete('/hapus_layanan/{id}', [ControllerLayanan::class, 'destroy'])->name('hapus_layanan');
-
-// ===== TRANSAKSI =====
-Route::get('/transaksi', [ControllerTransaksi::class, 'index'])->name('transaksi');
-Route::post('/tambah_transaksi', [ControllerTransaksi::class, 'store'])->name('tambah_transaksi');
-Route::put('/ubah_transaksi/{id}', [ControllerTransaksi::class, 'update'])->name('ubah_transaksi');
-Route::delete('/hapus_transaksi/{id}', [ControllerTransaksi::class, 'destroy'])->name('hapus_transaksi');
+// TRANSAKSI 
+Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+Route::post('/tambah_transaksi', [TransaksiController::class, 'store'])->name('tambah_transaksi');
+Route::put('/ubah_transaksi/{id}', [TransaksiController::class, 'update'])->name('ubah_transaksi');
+Route::delete('/hapus_transaksi/{id}', [TransaksiController::class, 'destroy'])->name('hapus_transaksi');
+Route::get('/hal-cetak/{id}', [TransaksiController::class, 'cetak'])->name('hal-cetak');
 
 
 

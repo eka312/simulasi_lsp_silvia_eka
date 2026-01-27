@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\layanan;
+use App\Models\Layanan;
 use Illuminate\Http\Request;
 
-class ControllerLayanan extends Controller
+class LayananController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $layanan=layanan::all();
+        $layanan=Layanan::all();
         return view('layanan',compact('layanan'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    // public function create()
-    // {
-    //     //
-    // }
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,30 +34,30 @@ class ControllerLayanan extends Controller
             'harga_per_kg'=>'required',
         ]);
 
-        layanan::create([
+        Layanan::create([
             'nama_layanan'=>$request->nama_layanan,
             'harga_per_kg'=>$request->harga_per_kg,
         ]);
 
 
-        return redirect()->back()->with('success', 'layanan berhasil ditambahkan!');
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    // public function show(string $id)
-    // {
-    //     //
-    // }
+    public function show(string $id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    // public function edit(string $id)
-    // {
-    //     //
-    // }
+    public function edit(string $id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +69,7 @@ class ControllerLayanan extends Controller
             'harga_per_kg'=>'required'
         ]);
 
-        $layanan=layanan::findOrFail($id);
+        $layanan=Layanan::findOrFail($id);
         $layanan->update([
             'nama_layanan'=>$request->nama_layanan,
             'harga_per_kg'=>$request->harga_per_kg
@@ -82,7 +82,7 @@ class ControllerLayanan extends Controller
      */
     public function destroy(string $id)
     {
-        $layanan=layanan::findOrFail($id);
+        $layanan=Layanan::findOrFail($id);
         $layanan->delete();
         return redirect()->back();
     }

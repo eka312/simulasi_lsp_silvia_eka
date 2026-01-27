@@ -32,8 +32,8 @@
 </head>
 
 <body>
-    
 
+    
     <div id="struk" class="pt-5">
         <h5 class="wrapper pt-5">
             Eka Laundry
@@ -46,21 +46,21 @@
                 Nama Pelanggan
             </div>
             <div class="col-6 text-start ">
-                : John Doe
+                : {{$transaksi->nama_pelanggan}}
             </div>
 
         </div>
         <div class="row">
             <div class="col-6 ">
-                Waktu Transaksi 
+                Waktu Transaksi
             </div>
             <div class="col-6 text-start ">
-                : 22-02-2026
+                : {{carbon\carbon::parse($transaksi->waktu_transaksi)->format('d-m-Y')}}
             </div>
         </div>
         <div class="row">
             <div class="col-6 ">
-                Nomor Telepon 
+                Nomor Telepon
             </div>
             <div class="col-6 text-start ">
                 : 08976563223
@@ -72,7 +72,7 @@
                 Berat
             </div>
             <div class="col-6 text-start ">
-                : 3 kg
+                : {{$transaksi->berat}} kg 
             </div>
 
         </div>
@@ -81,7 +81,7 @@
                 Harga / kg
             </div>
             <div class="col-6 text-start ">
-                : 5000
+                : Rp {{number_format($transaksi->layanan->harga_per_kg, 0, ',', '.')}}
             </div>
         </div>
         <div class="row">
@@ -89,7 +89,7 @@
                 Layanan
             </div>
             <div class="col-6 text-start ">
-                : Cuci Kering
+                : {{$transaksi->layanan->nama_layanan}}
             </div>
         </div>
         <hr>
@@ -98,16 +98,17 @@
                 Total
             </div>
             <div class="col-6 text-start ">
-                : 15.000
+                : Rp {{ number_format($transaksi->berat * $transaksi->layanan->harga_per_kg, 0, ',', '.')}}
             </div>
         </div>
         <hr>
         <h6 class="wrapper">LSP-2026 - Silvia Eka</h6>
-        
+
 
 
 
     </div>
+    
 
 
 

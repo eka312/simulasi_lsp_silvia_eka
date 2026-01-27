@@ -22,9 +22,6 @@
                         <form action="{{route('tambah_layanan')}}" method="post">
                             @csrf
                             <div class="modal-body">
-
-
-
                                 <div class="mb-3 row">
                                     <label for="text" class="col-sm-2 col-form-label">Layanan</label>
                                     <div class="col-sm-10">
