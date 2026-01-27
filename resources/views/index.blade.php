@@ -10,28 +10,28 @@
         <div class="col-xl-3 col-md-6">
             <div class="card bg-primary text-white  mb-4">
                 <h4 class="card-body text-capitalize">jumlah layanan</h4>
-                <h2 class="card-body "><b>5</b></h2>
+                <h2 class="card-body "><b>{{$jumlahLayanan}}</b></h2>
 
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-warning text-white mb-4">
                 <h4 class="card-body text-capitalize">transaksi baru</h4>
-                <h2 class="card-body "><b>3</b></h2>
+                <h2 class="card-body "><b>{{$transaksiBaru}}</b></h2>
 
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-success text-white mb-4">
                 <h4 class="card-body text-capitalize">sedang diproses</h4>
-                <h2 class="card-body "><b>2</b></h2>
+                <h2 class="card-body "><b>{{$sedangDiproses}}</b></h2>
 
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-danger text-white mb-4">
                 <h4 class="card-body text-capitalize">belum dibayar</h4>
-                <h2 class="card-body "><b>1</b></h2>
+                <h2 class="card-body "><b>{{$belumBayar}}</b></h2>
 
             </div>
         </div>
@@ -57,22 +57,16 @@
                 </thead>
                 
                 <tbody>
+                    @foreach($transaksiTerbaru as $t )
                     <tr>
-                        <td>1</td>
-                        <td>warsini</td>
-                        <td>Cuci Setrika</td>
-                        <td>10 kg</td>
-                        <td>12 Feb 2024</td>
-                        <td>Belum Bayar</td>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$t->nama_pelanggan}}</td>
+                        <td>{{$t->layanan->nama_layanan}}</td>
+                        <td>{{$t->berat}} kg</td>
+                        <td>{{carbon\carbon::parse($t->waktu_transaksi)->format('d-m-y')}}</td>
+                        <td>{{$t->pembayaran}}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Warsito</td>
-                        <td>Cuci Saja</td>
-                        <td>5 kg</td>
-                        <td>11 Feb 2024</td>
-                        <td>Lunas</td>
-                    </tr>
+                    @endforeach
 
                 </tbody>
             </table>
