@@ -40,7 +40,7 @@ class LayananController extends Controller
         ]);
 
 
-        return redirect()->back();
+        return redirect()->back()->with('store','Layanan berhasil ditambahkan.');
     }
 
     /**
@@ -74,7 +74,7 @@ class LayananController extends Controller
             'nama_layanan'=>$request->nama_layanan,
             'harga_per_kg'=>$request->harga_per_kg
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('update','Layanan berhasil diubah.');
     }
 
     /**
@@ -84,6 +84,6 @@ class LayananController extends Controller
     {
         $layanan=Layanan::findOrFail($id);
         $layanan->delete();
-        return redirect()->back();
+        return redirect()->back()->with('deleted','Layanan berhasil dihapus.');
     }
 }

@@ -25,13 +25,13 @@
                                 <div class="mb-3 row">
                                     <label for="text" class="col-sm-2 col-form-label">Layanan</label>
                                     <div class="col-sm-10">
-                                        <input name="nama_layanan" type="text" class="form-control" id="text">
+                                        <input name="nama_layanan" placeholder="masukan nama layanan" type="text" class="form-control" id="text">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label for="text" class="col-sm-2 col-form-label">Harga Per KG</label>
                                     <div class="col-sm-10">
-                                        <input name="harga_per_kg" type="text" class="form-control" id="text">
+                                        <input name="harga_per_kg" placeholder="masukan harga per kg" type="text" class="form-control" id="text">
                                     </div>
                                 </div>
 
@@ -108,30 +108,8 @@
                                 </div>
 
 
-                                <button type="button" class="btn btn-sm btn-danger me-1" data-bs-toggle="modal" data-bs-target="#modalHapus{{ $l->id_layanan }}"><i class="fas fa-trash"></i> Hapus</button>
-                                <!-- modal hapus -->
-                                <div class="modal fade" id="modalHapus{{ $l->id_layanan }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <form action="{{route('hapus_layanan',$l->id_layanan)}}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin ingin menghapus data ini?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                    <button type="submmit" class="btn btn-danger">Hapus</button>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                    </div>
-                                </div>
+                                <button type="button" class="btn btn-sm btn-danger me-1" onclick="hapus()"><i class="fas fa-trash"></i> Hapus</button>
+                                
 
                             </div>
                         </td>

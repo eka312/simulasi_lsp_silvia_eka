@@ -18,8 +18,15 @@
                 visibility: visible;
             }
 
-
+            .line {
+                border-top: 2px solid #000;
+                margin: 10px 0;
+                width: 100%;
+            }
+            
         }
+
+
 
         .wrapper {
             text-align: center;
@@ -33,14 +40,20 @@
 
 <body>
 
-    
+
     <div id="struk" class="pt-5">
-        <h5 class="wrapper pt-5">
+        <div class="wrapper">
+            <img src="{{asset('/assets/img/logo3-removebg-preview.png')}}" alt="logo" class="">
+        </div>
+        <h4 class="wrapper">
+
             Eka Laundry
-        </h5>
-        <hr>
+        </h4>
+        <div class="line"></div>
+        
         <p class="wrapper">Bukti Transaksi</p>
-        <hr>
+        <div class="line"></div>
+        
         <div class="row ">
             <div class="col-6 ">
                 Nama Pelanggan
@@ -63,16 +76,17 @@
                 Nomor Telepon
             </div>
             <div class="col-6 text-start ">
-                : 08976563223
+                : {{$transaksi->no_telp}}
             </div>
         </div>
-        <hr>
+        <div class="line"></div>
+        
         <div class="row ">
             <div class="col-6 ">
                 Berat
             </div>
             <div class="col-6 text-start ">
-                : {{$transaksi->berat}} kg 
+                : {{$transaksi->berat}} kg
             </div>
 
         </div>
@@ -92,7 +106,8 @@
                 : {{$transaksi->layanan->nama_layanan}}
             </div>
         </div>
-        <hr>
+        <div class="line"></div>
+        
         <div class="row">
             <div class="col-6 ">
                 Total
@@ -101,14 +116,15 @@
                 : Rp {{ number_format($transaksi->berat * $transaksi->layanan->harga_per_kg, 0, ',', '.')}}
             </div>
         </div>
-        <hr>
+        <div class="line"></div>
+        
         <h6 class="wrapper">LSP-2026 - Silvia Eka</h6>
 
 
 
 
     </div>
-    
+
 
 
 

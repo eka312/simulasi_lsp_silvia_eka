@@ -34,6 +34,7 @@ class TransaksiController extends Controller
         $request->validate([
             'waktu_transaksi' => 'required',
             'nama_pelanggan' => 'required',
+            'no_telp' => 'required',
             'id_layanan' => 'required',
             'berat' => 'required',
             'keterangan' => 'required',
@@ -43,13 +44,14 @@ class TransaksiController extends Controller
         Transaksi::create([
             'waktu_transaksi' => $request->waktu_transaksi,
             'nama_pelanggan' => $request->nama_pelanggan,
+            'no_telp' => $request->no_telp,
             'id_layanan' => $request->id_layanan,
             'berat' => $request->berat,
             'keterangan' => $request->keterangan,
             'pembayaran' => $request->pembayaran,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('store', 'Transaksi berhasil ditambahkan.');
     }
 
     /**
@@ -57,7 +59,8 @@ class TransaksiController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $transaksi = Transaksi::findOrFail($id);
+        return view('/hal-cetak', compact('transaksi'));
     }
 
     /**
@@ -76,23 +79,25 @@ class TransaksiController extends Controller
         $request->validate([
             'waktu_transaksi' => 'required',
             'nama_pelanggan' => 'required',
+            'no_telp' => 'required',
             'id_layanan' => 'required',
             'berat' => 'required',
             'keterangan' => 'required',
-            'pembayaran' => 'required',
+           
         ]);
         
         $transaksi = Transaksi::findOrFail($id);
         $transaksi->update([
             'waktu_transaksi' => $request->waktu_transaksi,
             'nama_pelanggan' => $request->nama_pelanggan,
+            'no_telp' => $request->no_telp,
             'id_layanan' => $request->id_layanan,
             'berat' => $request->berat,
             'keterangan' => $request->keterangan,
-            'pembayaran' => $request->pembayaran,
+           
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('update', 'Transaksi berhasil diperbarui.');
     }
 
     /**
@@ -102,12 +107,18 @@ class TransaksiController extends Controller
     {
         $delete = Transaksi::findOrFail($id);
         $delete->delete();
-        return redirect()->back();
+        return redirect()->back()->with('deleted', 'Transaksi berhasil dihapus.');
     }
 
-    public function cetak(string $id)
+    public function bayar(string $id)
     {
         $transaksi = Transaksi::findOrFail($id);
-        return view('/hal-cetak', compact('transaksi'));
+        $transaksi->update([
+            'pembayaran' => 'Lunas',
+        ]);
+
+        return redirect()->back()->with('bayar', 'Transaksi berhasil dibayar.');
     }
+
+    
 }

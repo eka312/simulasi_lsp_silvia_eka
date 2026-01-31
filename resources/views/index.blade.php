@@ -63,7 +63,11 @@
                         <td>{{$t->nama_pelanggan}}</td>
                         <td>{{$t->layanan->nama_layanan}}</td>
                         <td>{{$t->berat}} kg</td>
-                        <td>{{carbon\carbon::parse($t->waktu_transaksi)->format('d-m-Y')}}</td>
+                        <td>{{carbon\carbon::parse($t->waktu_transaksi)
+                            ->locale('id')
+                            ->translatedFormat('d-M-Y')
+                            }}
+                        </td>
                         <td>{{$t->pembayaran}}</td>
                     </tr>
                     @endforeach
